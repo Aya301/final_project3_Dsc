@@ -2,21 +2,20 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'home.dart';
-//import 'main.dart';
 
 class screen extends StatefulWidget {
   const screen({Key key}) : super(key: key);
-
   @override
   _screenState createState() => _screenState();
 }
+
 class _screenState extends State<screen> {
   @override
   void initState(){
     super.initState();
     Timer(Duration(seconds: 3),
             ()=> Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context)=> HomePage())));
+                MaterialPageRoute(builder: (context)=> HomePage())));
   }
   @override
   Widget build(BuildContext context) {

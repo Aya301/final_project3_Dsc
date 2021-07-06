@@ -1,30 +1,32 @@
 import 'dart:convert';
-
 import 'package:final_3/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'data.dart';
 
 class countries extends StatefulWidget {
   String id;
   String name;
-  countries({Key key,this.title}):super(key: key);
+  static var lenght;
+  countries({Key key, this.title,@required this.id,this.name}):super(key: key);
   final String title;
   @override
   _countriesState createState()=> _countriesState();
 }
+
 class _countries extends StatefulWidget{
   @override
   _countriesState createState()=> _countriesState();
 }
+
 class _countriesState extends State<countries> {
   Map _map;
   List country;
   List languages;
   List countries = [];
-  List countLang = [];
-  var favCountry;
-  bool isSearching = false;
-  List filterCountries = [];
+  // var favCountry;
+  // bool isSearching = false;
+  // List filterCountries = [];
 
   Future<List> getCountry() async{
     final String response = await rootBundle.loadString('assets/data.json');
@@ -43,14 +45,25 @@ class _countriesState extends State<countries> {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: Text(
-            'world', style: TextStyle(fontWeight: FontWeight.bold),),
+            'World', style: TextStyle(fontWeight: FontWeight.bold),),
         ),
-         //body: ListView.builder(itemBuilder:countries.length),
+        body: ListView.builder(
+          itemCount:countries.length,
+          itemBuilder: (BuildContext context,int index ){
+            return Card(
+              child: ListTile(
+                leading: Text( countries[index]["id"]),
+                title: Text(countries[index]["name"]),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

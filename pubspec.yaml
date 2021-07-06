@@ -58,6 +58,7 @@ flutter:
     - image/Australia.jpg
     - image/North America.jpg
     - image/South America.jpg
+#    - assets/data.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
